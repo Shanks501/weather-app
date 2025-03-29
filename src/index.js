@@ -17,7 +17,7 @@ async function getWeatherData(location) {
     const weatherData = (await response).json();
     return weatherData;
 }
-async function getCurrentTemperature(location) {
+async function getCurrentWeather(location) {
     try {
         const data = await getWeatherData(location);
         console.log(data);
@@ -40,4 +40,4 @@ async function getCurrentTemperature(location) {
     }
 }
 
-console.log(getCurrentTemperature("ljubljana"));
+console.log(getCurrentWeather("ljubljana"));
