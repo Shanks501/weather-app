@@ -1,12 +1,13 @@
-const buttonCheck = document.querySelector("#buttonCheck");
+import "./styles.css";
+// const buttonCheck = document.querySelector("#buttonCheck");
 
-buttonCheck.addEventListener("click", async () => {
-    const inputLocation = document.querySelector("#location");
-    // const divCurrentTemp = document.querySelector("#currentTemp");
-    const WeatherData = await getCurrentTemperature(inputLocation.value);
-    console.log(WeatherData);
-    // divCurrentTemp.textContent = `Current temperature is ${WeatherData.currentTemp}°C`;
-});
+// buttonCheck.addEventListener("click", async () => {
+//     const inputLocation = document.querySelector("#location");
+//     // const divCurrentTemp = document.querySelector("#currentTemp");
+//     const WeatherData = await getCurrentTemperature(inputLocation.value);
+//     console.log(WeatherData);
+//     // divCurrentTemp.textContent = `Current temperature is ${WeatherData.currentTemp}°C`;
+// });
 
 async function getWeatherData(location) {
     const response = fetch(
@@ -39,4 +40,4 @@ async function getCurrentTemperature(location) {
     }
 }
 
-// console.log(getCurrentTemperature("ljubljana"));
+console.log(getCurrentTemperature("ljubljana"));
