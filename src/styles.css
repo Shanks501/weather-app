@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --main-font-weight: 700;
+    --secondary-font-weight: 500;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* outline: 1px solid red; */
+    font-family: "Raleway", Helvetica, sans-serif;
+    color: white;
+}
+
+#container {
+    height: 100vh;
+    padding: 2rem;
+    /* background-image: url(images/cloudy-bg.jpg);
+    background-size: cover; */
+    background: rgb(248, 81, 57);
+    background: linear-gradient(
+        0deg,
+        rgba(248, 81, 57, 1) 0%,
+        rgba(194, 52, 78, 1) 20%,
+        rgba(165, 36, 89, 1) 61%,
+        rgba(136, 20, 100, 1) 93%
+    );
+}
+header {
+    display: flex;
+    gap: 2rem;
+    margin: 0 0 30vh 0;
+}
+
+header input[type="text"] {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    font-weight: var(--main-font-weight);
+    font-size: 1rem;
+    width: 20vw;
+    color: black;
+}
+
+header input[type="text"]:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+header p {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+header p,
+input[type="button"] {
+    font-weight: var(--main-font-weight);
+    font-size: 1.2rem;
+}
+
+header input[type="button"] {
+    background: none;
+    border: none;
+}
+
+/* weather today start*/
+#weatherToday {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+    /* height: 30vh; */
+}
+
+#currentConditions {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+    gap: 0.5rem 1rem;
+    padding: 0 1rem;
+}
+#currentConditions img {
+    height: 6rem;
+}
+
+#currentConditions p {
+    font-weight: var(--secondary-font-weight);
+}
+
+#currentConditions span {
+    font-weight: var(--main-font-weight);
+}
+
+#currentConditions div {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+#detailsWeather {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin-right: 2rem;
+}
+
+#detailsWeather span {
+    font-weight: var(--main-font-weight);
+}
+
+#hourlyWeather {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem 2rem;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+#hourlyWeather p {
+    font-weight: var(--main-font-weight);
+    font-size: 1.5rem;
+}
+
+.timeOfDay {
+    grid-column: span 2;
+}
+/* weather today end*/
+
+hr {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* weather by day start*/
+#weatherDays {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    border-top: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    padding: 1.5rem 2rem;
+}
+
+.day:nth-child(1) {
+    border-top: 5px solid rgb(250, 250, 250, 0.5);
+}
+
+.day h5 {
+    font-weight: var(--main-font-weight);
+    font-size: 1.2rem;
+}
+
+.day span {
+    margin-bottom: 1rem;
+}
+
+.day div {
+    margin-top: 1rem;
+}
+
+/* weather by day end*/
+
+#weatherForecast {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(14.3px);
+}
