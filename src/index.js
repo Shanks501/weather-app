@@ -1,13 +1,5 @@
 import "./styles.css";
-// const buttonCheck = document.querySelector("#buttonCheck");
-
-// buttonCheck.addEventListener("click", async () => {
-//     const inputLocation = document.querySelector("#location");
-//     // const divCurrentTemp = document.querySelector("#currentTemp");
-//     const WeatherData = await getCurrentTemperature(inputLocation.value);
-//     console.log(WeatherData);
-//     // divCurrentTemp.textContent = `Current temperature is ${WeatherData.currentTemp}°C`;
-// });
+import "./domHandler.js";
 
 async function getWeatherData(location) {
     const response = fetch(
@@ -17,7 +9,8 @@ async function getWeatherData(location) {
     const weatherData = (await response).json();
     return weatherData;
 }
-async function getCurrentWeather(location) {
+
+export async function getCurrentWeather(location) {
     try {
         const data = await getWeatherData(location);
         console.log(data);
@@ -32,6 +25,7 @@ async function getCurrentWeather(location) {
             humidity: data.currentConditions.humidity,
             uvindex: data.currentConditions.uvindex,
             precipProb: data.currentConditions.precipprob,
+            icon: data.currentConditions.icon,
         };
         return Weather;
     } catch (error) {
@@ -39,5 +33,3 @@ async function getCurrentWeather(location) {
         return "Unavailable";
     }
 }
-
-console.log(getCurrentWeather("ljubljana"));
