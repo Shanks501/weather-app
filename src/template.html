@@ -9,21 +9,21 @@
             <header>
                 <h2>Weather</h2>
                 <input type="text" name="location" id="location" placeholder="Search City" />
-                <input type="button" value="°C" />
-                <input type="button" value="°F" />
+                <p><input type="button" value="°C" />|<input type="button" value="°F" /></p>
             </header>
             <div id="weatherForecast">
                 <div id="weatherToday">
                     <div id="currentConditions">
                         <div></div>
                         <span>Friday 27 July 15:00</span>
-                        <img src="images/weather-partly-cloudy.svg" />
-                        <div id="temp">+22°C</div>
+                        <img src="images/WeatherIcons/rain.svg" />
+                        <div>+22°C</div>
                         <p>Sunrise: 4:59</p>
                         <span>Feels like 23</span>
                         <p>Sunset: 20:47</p>
                         <p>The whole day will be cloudy. No preciptation</p>
                     </div>
+                    <hr />
                     <div id="detailsWeather">
                         <span>More details</span>
                         <div class="moreDetails">Wind speed</div>
@@ -31,6 +31,7 @@
                         <div class="moreDetails">Pressure</div>
                         <div class="moreDetails">Preciptation probability</div>
                     </div>
+                    <hr />
                     <div id="hourlyWeather">
                         <span class="timeOfDay">Night</span>
                         <span class="timeOfDay">Morning</span>
