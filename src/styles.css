@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
     --main-font-weight: 700;
@@ -10,15 +10,13 @@
     margin: 0;
     padding: 0;
     /* outline: 1px solid red; */
-    font-family: "Raleway", Helvetica, sans-serif;
+    font-family: "Inter", Helvetica, sans-serif;
     color: white;
 }
 
 #container {
     height: 100vh;
     padding: 2rem;
-    /* background-image: url(images/cloudy-bg.jpg);
-    background-size: cover; */
     background: rgb(248, 81, 57);
     background: linear-gradient(
         0deg,
@@ -104,7 +102,6 @@ header input[type="button"] {
     flex-direction: column;
     justify-content: space-evenly;
     gap: 1rem;
-    margin-right: 2rem;
 }
 
 #detailsWeather span {
