@@ -2,16 +2,18 @@ import { getCurrentWeather } from "./index.js";
 
 const locationInput = document.querySelector("#location");
 
-locationInput.addEventListener("keydown", (e) => {
+locationInput.addEventListener("keydown", async (e) => {
     if (e.key === "Enter") {
-        createCurrentConditionsElements();
+        const weatherData = await getCurrentWeather(locationInput.value);
+        createCurrentConditionsElements(weatherData);
+        createMoreDetailsElements(weatherData);
+        createHourlyWeatherElements(weatherData);
     }
 });
 
-export async function createCurrentConditionsElements() {
-    deleteAllElements();
+export function createCurrentConditionsElements(weatherData) {
     const currentConditions = document.querySelector("#currentConditions");
-    const weatherData = await getCurrentWeather(locationInput.value);
+    currentConditions.textContent = "";
 
     const divEmpty = document.createElement("div");
     const spanDate = document.createElement("span");
@@ -45,12 +47,72 @@ export async function createCurrentConditionsElements() {
         pDescription
     );
     console.log(locationInput.value);
-    console.log(weatherData);
+    console.dir(weatherData);
 
     locationInput.value = "";
 }
 
-function deleteAllElements() {
-    const currentConditions = document.querySelector("#currentConditions");
-    currentConditions.textContent = "";
+export async function createMoreDetailsElements(weatherData) {
+    const detailsWeather = document.querySelector("#detailsWeather");
+    detailsWeather.textContent = "";
+
+    const spanMoreDetails = document.createElement("span");
+
+    const arrDetails = ["Wind speed", "Air humidity", "UV index", "Preciptation probability"];
+    const arrDetailsData = [
+        weatherData.windSpeed,
+        weatherData.humidity,
+        weatherData.uvindex,
+        weatherData.precipProb,
+    ];
+    const arrDetailsUnit = ["km/h", "%", "", "%"];
+
+    spanMoreDetails.textContent = "More details";
+    detailsWeather.append(spanMoreDetails);
+
+    arrDetails.forEach((element, index) => {
+        const divDetailName = document.createElement("div");
+        const spanDetailsData = document.createElement("span");
+
+        divDetailName.setAttribute("class", "moreDetails");
+
+        divDetailName.textContent = element;
+        spanDetailsData.textContent = ` ${arrDetailsData[index]} ${arrDetailsUnit[index]} `;
+        divDetailName.append(spanDetailsData);
+        detailsWeather.append(divDetailName);
+    });
+}
+
+function createHourlyWeatherElements(weatherData) {
+    const hourlyWeather = document.querySelector("#hourlyWeather");
+    hourlyWeather.textContent = "";
+
+    const arrTimeOfDayName = ["Night", "Morning", "Day", "Evening"];
+
+    arrTimeOfDayName.forEach((e) => {
+        const spanTimeOfDay = document.createElement("span");
+        spanTimeOfDay.setAttribute("class", "timeOfDay");
+        spanTimeOfDay.textContent = e;
+
+        hourlyWeather.append(spanTimeOfDay);
+    });
+
+    weatherData.hourlyTemp.forEach((element) => {
+        const pHourlyTemp = document.createElement("p");
+        pHourlyTemp.textContent = `${Math.floor(parseInt(element))} °C`;
+
+        hourlyWeather.append(pHourlyTemp);
+    });
+
+    weatherData.hourlyTempHour.forEach((element) => {
+        const spanHourOfDay = document.createElement("span");
+        spanHourOfDay.textContent = `${element.slice(0, 5)}`;
+
+        hourlyWeather.append(spanHourOfDay);
+    });
+}
+
+function createWeatherDaysElements() {
+    const weatherDays = document.querySelector("#weatherDays");
+    weatherDays.textContent = "";
 }
