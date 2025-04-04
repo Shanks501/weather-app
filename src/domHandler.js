@@ -10,9 +10,14 @@ locationInput.addEventListener("keydown", async (e) => {
         createMoreDetailsElements(weatherData);
         createHourlyWeatherElements(weatherData);
         createWeatherDaysElements(weatherData);
-        changeWeatherTitleToLocation(locationInput.value);
     }
 });
+
+const weatherData = await getCurrentWeather("Rome");
+createCurrentConditionsElements(weatherData);
+createMoreDetailsElements(weatherData);
+createHourlyWeatherElements(weatherData);
+createWeatherDaysElements(weatherData);
 
 function createCurrentConditionsElements(weatherData) {
     const currentConditions = document.querySelector("#currentConditions");
