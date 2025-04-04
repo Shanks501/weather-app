@@ -10,6 +10,7 @@ locationInput.addEventListener("keydown", async (e) => {
         createMoreDetailsElements(weatherData);
         createHourlyWeatherElements(weatherData);
         createWeatherDaysElements(weatherData);
+        changeWeatherTitleToLocation(locationInput.value);
     }
 });
 
