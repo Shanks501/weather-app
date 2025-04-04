@@ -5,13 +5,15 @@ const locationInput = document.querySelector("#location");
 locationInput.addEventListener("keydown", async (e) => {
     if (e.key === "Enter") {
         const weatherData = await getCurrentWeather(locationInput.value);
+        // changeBackgroundGradient();
         createCurrentConditionsElements(weatherData);
         createMoreDetailsElements(weatherData);
         createHourlyWeatherElements(weatherData);
+        createWeatherDaysElements(weatherData);
     }
 });
 
-export function createCurrentConditionsElements(weatherData) {
+function createCurrentConditionsElements(weatherData) {
     const currentConditions = document.querySelector("#currentConditions");
     currentConditions.textContent = "";
 
@@ -52,7 +54,7 @@ export function createCurrentConditionsElements(weatherData) {
     locationInput.value = "";
 }
 
-export async function createMoreDetailsElements(weatherData) {
+function createMoreDetailsElements(weatherData) {
     const detailsWeather = document.querySelector("#detailsWeather");
     detailsWeather.textContent = "";
 
@@ -112,7 +114,40 @@ function createHourlyWeatherElements(weatherData) {
     });
 }
 
-function createWeatherDaysElements() {
+function createWeatherDaysElements(weatherData) {
     const weatherDays = document.querySelector("#weatherDays");
     weatherDays.textContent = "";
+
+    weatherData.forecastDate.forEach((dateElement, index) => {
+        const divDay = document.createElement("div");
+        const h5DayOfTheWeek = document.createElement("h5");
+        const spanDateDay = document.createElement("span");
+        const divMaxTemp = document.createElement("p");
+        const divMinTemp = document.createElement("p");
+        const imgIconDay = document.createElement("img");
+
+        const date = new Date(dateElement);
+        const dayName = date.toLocaleString("en-US", { weekday: "long" });
+
+        const weatherIcons = require.context("./images/WeatherIcons", false, /\.svg$/);
+        const weatherIconPathDay = weatherIcons(`./${weatherData.forecastTempIcon[index]}.svg`);
+
+        divDay.setAttribute("class", "day");
+        weatherDays.append(divDay);
+
+        h5DayOfTheWeek.textContent = dayName;
+        spanDateDay.textContent = "24 july";
+        divMaxTemp.textContent = `Max: ${weatherData.forecastTempMax[index]} °C`;
+        divMinTemp.textContent = `Min: ${weatherData.forecastTempMin[index]} °C`;
+        imgIconDay.setAttribute("src", weatherIconPathDay);
+
+        divDay.append(h5DayOfTheWeek, spanDateDay, divMaxTemp, divMinTemp, imgIconDay);
+    });
 }
+
+// function changeBackgroundGradient() {
+//     const container = document.querySelector("#container");
+//     console.log(container);
+//     container.removeAttribute("class");
+//     container.setAttribute("class", "cloudyWeather");
+// }
