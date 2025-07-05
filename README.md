@@ -14,4 +14,4 @@ This is a simple weather application that fetches weather data from the [Visual 
 - **JavaScript** for fetching and displaying weather data.
 
 ## Live website 
-[Weather App Website](https://sigi1013.github.io/weather-app/).
+[Weather App Website](https://Shanks501.github.io/weather-app/).
